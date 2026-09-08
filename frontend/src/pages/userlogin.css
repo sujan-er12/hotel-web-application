@@ -1,0 +1,118 @@
+/* UserLogin.css */
+
+.auth-container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #0f172a, #1e3a8a, #2563eb);
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 20px;
+}
+
+/* Login Card */
+.auth-box {
+    width: 400px;
+    padding: 45px 40px;
+    background: rgba(255, 255, 255, 0.97);
+    border-radius: 20px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+    text-align: center;
+}
+
+/* Heading */
+.auth-box h1 {
+    margin-bottom: 30px;
+    color: #172554;
+    font-size: 32px;
+    font-weight: 700;
+}
+
+/* Form */
+.auth-box form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+/* Inputs */
+.auth-box input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 15px 16px;
+    border: 1px solid #d1d5db;
+    border-radius: 10px;
+    font-size: 15px;
+    outline: none;
+    transition: 0.3s;
+    background: #f8fafc;
+}
+
+.auth-box input:focus {
+    border-color: #2563eb;
+    background: white;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+/* Login Button */
+.auth-box button {
+    margin-top: 5px;
+    padding: 15px;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #2563eb, #1d4ed8);
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.auth-box button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.35);
+}
+
+.auth-box button:active {
+    transform: translateY(0);
+}
+
+/* Error / Success Message */
+.auth-box > p:first-of-type {
+    margin-top: 18px;
+    color: #dc2626;
+    font-size: 14px;
+    min-height: 20px;
+}
+
+/* Register Text */
+.auth-box p:last-child {
+    margin-top: 25px;
+    color: #64748b;
+    font-size: 14px;
+}
+
+/* Register Link */
+.auth-box a {
+    margin-left: 6px;
+    color: #2563eb;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.auth-box a:hover {
+    text-decoration: underline;
+}
+
+/* Mobile */
+@media (max-width: 500px) {
+
+    .auth-box {
+        width: 100%;
+        padding: 35px 25px;
+    }
+
+    .auth-box h1 {
+        font-size: 27px;
+    }
+}
