@@ -31,7 +31,7 @@ function OwnerLogin() {
             setLoading(true);
 
             const response = await fetch(
-                "http://127.0.0.1:5000/api/owner/login",
+                "https://hotel-web-application-bmc5.onrender.com/api/owner/login",
                 {
                     method: "POST",
 

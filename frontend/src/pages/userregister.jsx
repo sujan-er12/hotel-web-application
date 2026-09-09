@@ -26,7 +26,7 @@ function UserRegister() {
         e.preventDefault();
 
         const response = await fetch(
-            "http://127.0.0.1:5000/api/user/register",
+            "https://hotel-web-application-bmc5.onrender.com/api/user/register",
             {
                 method: "POST",
                 headers: {

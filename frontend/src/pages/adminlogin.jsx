@@ -21,7 +21,7 @@ function AdminLogin() {
         try {
 
             const response = await fetch(
-                "http://127.0.0.1:5000/api/admin/login",
+                "https://hotel-web-application-bmc5.onrender.com/api/admin/login",
                 {
                     method: "POST",
                     headers: {
