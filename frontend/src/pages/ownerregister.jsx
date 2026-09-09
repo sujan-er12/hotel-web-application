@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import "./OwnerRegister.css";
+import "./ownerregister.css";
 
 function OwnerRegister() {
     const navigate = useNavigate();
