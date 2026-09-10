@@ -143,6 +143,12 @@ def login():
         }
     }), 200
 
+    
+@app.route("/")
+def home():
+    return jsonify({
+        "message": "Hotel backend is running"
+    })
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=int(os.getenv("PORT", 5000)))
