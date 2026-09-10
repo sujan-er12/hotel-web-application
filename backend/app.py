@@ -8,8 +8,6 @@ app = Flask(__name__)
 CORS(app)
 
 
-
-
 def get_db():
     return mysql.connector.connect(
         host=os.getenv("DB_HOST"),
@@ -45,7 +43,6 @@ def register():
     db = get_db()
     cursor = db.cursor()
 
-    # Check email
     cursor.execute(
         "SELECT id FROM users WHERE email = %s",
         (email,)
@@ -59,7 +56,6 @@ def register():
             "message": "Email already registered"
         }), 409
 
-    # Hash password
     hashed_password = generate_password_hash(password)
 
     cursor.execute(
@@ -144,13 +140,16 @@ def login():
     }), 200
 
 
+# HOME / HEALTH CHECK
 @app.route("/")
 def home():
     return jsonify({
         "message": "Hotel backend is running"
     })
 
-    @app.route("/api/test-db")
+
+# DATABASE TEST
+@app.route("/api/test-db")
 def test_db():
     try:
         db = get_db()
@@ -174,5 +173,9 @@ def test_db():
             "message": str(e)
         }), 500
 
+
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=int(os.getenv("PORT", 5000)))
+    app.run(
+        host="0.0.0.0",
+        port=int(os.getenv("PORT", 5000))
+    )
