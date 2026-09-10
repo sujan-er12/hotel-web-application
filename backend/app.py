@@ -143,12 +143,36 @@ def login():
         }
     }), 200
 
-    
+
 @app.route("/")
 def home():
     return jsonify({
         "message": "Hotel backend is running"
     })
+
+    @app.route("/api/test-db")
+def test_db():
+    try:
+        db = get_db()
+        cursor = db.cursor()
+
+        cursor.execute("SELECT 1")
+        result = cursor.fetchone()
+
+        cursor.close()
+        db.close()
+
+        return jsonify({
+            "status": "success",
+            "database": "Connected to Railway MySQL",
+            "result": result[0]
+        })
+
+    except Exception as e:
+        return jsonify({
+            "status": "error",
+            "message": str(e)
+        }), 500
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=int(os.getenv("PORT", 5000)))
