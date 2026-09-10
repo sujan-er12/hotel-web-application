@@ -11,49 +11,50 @@ function UserLogin() {
     const [loading, setLoading] = useState(false);
 
     const handleSubmit = async (e) => {
-        e.preventDefault();
+    e.preventDefault();
 
-        setMessage("");
-        setLoading(true);
+    setMessage("");
+    setLoading(true);
 
-        try {
-            const response = await fetch(
-                "https://hotel-web-application-bmc5.onrender.com/api/user/login",
-                {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify({
-                        email,
-                        password
-                    })
-                }
-            );
-
-            const data = await response.json();
-
-            if (!response.ok) {
-                setMessage(data.message || "Invalid email or password");
-                setLoading(false);
-                return;
+    try {
+        const response = await fetch(
+            "https://hotel-web-application-bmc5.onrender.com/api/login",
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    email,
+                    password,
+                    role: "user"
+                })
             }
+        );
 
-            // Save logged-in user
-            localStorage.setItem(
-                "user",
-                JSON.stringify(data.user)
-            );
+        const data = await response.json();
 
-            // Go to dashboard
-            navigate("/user/userdashboard");
-
-        } catch (error) {
-            console.error("Login error:", error);
-            setMessage("Unable to connect to server");
+        if (!response.ok) {
+            setMessage(data.message || "Invalid email or password");
+            setLoading(false);
+            return;
         }
 
-        setLoading(false);
+        // Save logged-in user
+        localStorage.setItem(
+            "user",
+            JSON.stringify(data.user)
+        );
+
+        // Go to dashboard
+        navigate("/user/userdashboard");
+
+    } catch (error) {
+        console.error("Login error:", error);
+        setMessage("Unable to connect to server");
+    }
+
+    setLoading(false);
     };
 
     return (
