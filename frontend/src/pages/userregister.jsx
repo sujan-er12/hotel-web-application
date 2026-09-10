@@ -26,15 +26,18 @@ function UserRegister() {
         e.preventDefault();
 
         const response = await fetch(
-            "https://hotel-web-application-bmc5.onrender.com/api/user/register",
-            {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(form)
-            }
-        );
+    "https://hotel-web-application-bmc5.onrender.com/api/register",
+    {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            ...form,
+            role: "user"
+        })
+    }
+     );
 
         const data = await response.json();
 
